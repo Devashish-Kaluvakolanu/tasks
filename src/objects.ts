@@ -85,7 +85,7 @@ export function toMarkdown(question: Question): string {
         return `${header}\n${body}`;
     }
     const options = question.options.map((opt) => `- ${opt}`).join("\n");
-    return `${header}\n${body}${options ? `\n${options}` : ""}`;
+    return `${header}\n${body}\n${options}`;
 }
 
 /**
