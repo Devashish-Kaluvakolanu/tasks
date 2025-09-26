@@ -42,13 +42,9 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
-    if (question.type === "short_answer_question") {
-        return true;
-    }
-    if (question.type === "multiple_choice_question") {
-        return question.options.includes(answer);
-    }
-    return false;
+    return question.type === "short_answer_question" ?
+            true
+        :   question.options.includes(answer);
 }
 
 /**
@@ -85,7 +81,7 @@ export function toMarkdown(question: Question): string {
         return `${header}\n${body}`;
     }
     const options = question.options.map((opt) => `- ${opt}`).join("\n");
-    return `${header}\n${body}${options ? `\n${options}` : ""}`;
+    return `${header}\n${body}\n${options}`;
 }
 
 /**
