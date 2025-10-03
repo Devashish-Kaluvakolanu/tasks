@@ -15,22 +15,37 @@ export function TwoDice(): React.JSX.Element {
     const [left, setLeft] = useState<number>(d6());
     const [right, setRight] = useState<number>(d6());
 
-    function roll() {
-        setLeft(d6());
-        setRight(d6());
-    }
-
-    const win = left === right;
+    const isSnakeEyes = left === 1 && right === 1;
+    const isWin = left === right && !isSnakeEyes;
 
     return (
         <div>
             <div className="mb-2">
-                <span className="me-3">Left: {left}</span>
-                <span>Right: {right}</span>
+                <span data-testid="left-die" className="me-3">
+                    Left: {left}
+                </span>
+                <span data-testid="right-die">Right: {right}</span>
             </div>
-            <div className="mb-2">Sum: {left + right}</div>
-            <div className="mb-2">{win ? "You Win!" : "You Lose"}</div>
-            <Button onClick={roll}>Roll</Button>
+
+            {isWin && <div className="mb-2">You Win!</div>}
+            {isSnakeEyes && <div className="mb-2">You Lose!</div>}
+
+            <div className="d-flex gap-2">
+                <Button
+                    onClick={() => {
+                        setLeft(d6());
+                    }}
+                >
+                    Roll Left
+                </Button>
+                <Button
+                    onClick={() => {
+                        setRight(d6());
+                    }}
+                >
+                    Roll Right
+                </Button>
+            </div>
         </div>
     );
 }
