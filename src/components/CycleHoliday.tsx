@@ -16,7 +16,7 @@ export function CycleHoliday(): React.JSX.Element {
     return (
         <div>
             <div style={{ fontSize: "2rem" }} aria-label="current-holiday">
-                {holiday}
+                Holiday: {holiday}
             </div>
             <div className="mt-2">
                 <Button

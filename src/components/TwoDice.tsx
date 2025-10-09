@@ -12,8 +12,14 @@ export function d6(): number {
 }
 
 export function TwoDice(): React.JSX.Element {
-    const [left, setLeft] = useState<number>(d6());
-    const [right, setRight] = useState<number>(d6());
+    const first = d6();
+    let second = d6();
+    while (second === first) {
+        second = d6();
+    }
+
+    const [left, setLeft] = useState<number>(first);
+    const [right, setRight] = useState<number>(second);
 
     const isSnakeEyes = left === 1 && right === 1;
     const isWin = left === right && !isSnakeEyes;
