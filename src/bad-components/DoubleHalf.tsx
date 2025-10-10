@@ -2,11 +2,11 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useDoubleHalfState } from "./DoubleHalfState";
 
-type DoubleHalfState = {
+/* type DoubleHalfState = {
     dhValue: number;
     setDhValue: (n: number) => void;
 };
-
+*/
 function Doubler({
     dhValue,
     setDhValue,
