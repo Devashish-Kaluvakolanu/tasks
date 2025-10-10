@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import useDoubleHalfState from "./DoubleHalfState";
+import { useDoubleHalfState } from "./DoubleHalfState";
 
 type DoubleHalfState = {
     dhValue: number;
@@ -44,7 +44,7 @@ function Halver({
 }
 
 export function DoubleHalf(): React.JSX.Element {
-    const { dhValue, setDhValue } = useDoubleHalfState() as DoubleHalfState;
+    const [dhValue, setDhValue] = useDoubleHalfState();
 
     return (
         <div>
